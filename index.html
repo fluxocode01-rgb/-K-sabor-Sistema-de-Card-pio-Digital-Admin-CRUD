@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K-sabor | Cardápio Digital</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>K-sabor</h1>
+      <div id="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-count">0</span>
+      </div>
+    </header>
+
+    <main id="menu-container"></main>
+
+    <div id="cart-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Seu Pedido</h2>
+          <span class="close-modal">&times;</span>
+        </div>
+        <div id="cart-items"></div>
+        <div class="cart-total">
+          <strong>Total: <span id="total-price">R$ 0,00</span></strong>
+        </div>
+        <div class="delivery-form">
+          <input type="text" id="cust-name" placeholder="Seu Nome" required />
+          <input
+            type="text"
+            id="cust-address"
+            placeholder="Endereço de Entrega"
+            required
+          />
+        </div>
+        <button id="btn-finish" class="btn-add">
+          <i class="fab fa-whatsapp"></i> Enviar Pedido via WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/db.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K-sabor | Login Admin</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .login-container {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary);
+      }
+      .login-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        width: 350px;
+        text-align: center;
+      }
+      .login-card h2 {
+        margin-bottom: 1.5rem;
+        color: var(--primary);
+      }
+      .login-card input {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-card">
+        <h2>Acesso Restrito</h2>
+        <input type="text" id="user" placeholder="Usuário" />
+        <input type="password" id="pass" placeholder="Senha" />
+        <button class="btn-add" onclick="handleLogin()">Entrar</button>
+      </div>
+    </div>
+
+    <script src="js/db.js"></script>
+    <script>
+      function handleLogin() {
+        const u = document.getElementById("user").value;
+        const p = document.getElementById("pass").value;
+        const settings = db.getSettings();
+
+        if (u === settings.adminUser && p === settings.adminPass) {
+          sessionStorage.setItem("logged", "true");
+          window.location.href = "admin.html";
+        } else {
+          alert("Usuário ou senha incorretos!");
+        }
+      }
+    </script>
+  </body>
+</html>

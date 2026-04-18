@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>K-sabor | Admin</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+  </head>
+  <body>
+    <header>
+      <h1 id="admin-title">K-sabor <small>(Painel Admin)</small></h1>
+      <div>
+        <a
+          href="index.html"
+          style="color: white; text-decoration: none; margin-right: 20px"
+          ><i class="fas fa-eye"></i> Ver Loja</a
+        >
+        <button
+          onclick="logout()"
+          style="background: none; border: none; color: white; cursor: pointer"
+        >
+          <i class="fas fa-sign-out-alt"></i> Sair
+        </button>
+      </div>
+    </header>
+
+    <div class="admin-container">
+      <section class="admin-card">
+        <h2><i class="fas fa-cog"></i> Configurações do Sistema</h2>
+        <form id="settings-form" class="settings-grid">
+          <div class="form-control">
+            <label for="set-name">Nome da Lanchonete:</label>
+            <input
+              type="text"
+              id="set-name"
+              placeholder="Ex: K-sabor"
+              required
+            />
+          </div>
+
+          <div class="form-control">
+            <label for="set-fee">Taxa de Entrega (R$):</label>
+            <input
+              type="number"
+              id="set-fee"
+              step="0.01"
+              placeholder="Ex: 5.00"
+              required
+            />
+          </div>
+
+          <div class="form-control full-width">
+            <label for="set-logo">URL da Logomarca (Imagem):</label>
+            <input
+              type="text"
+              id="set-logo"
+              placeholder="https://link-da-sua-imagem.png"
+            />
+          </div>
+
+          <div class="form-control full-width">
+            <label for="set-whatsapp">WhatsApp de Recebimento (com DDD):</label>
+            <input
+              type="text"
+              id="set-whatsapp"
+              placeholder="Ex: 5511999999999"
+            />
+            <small>Sempre comece com 55 + DDD + Número</small>
+          </div>
+
+          <div class="form-control full-width">
+            <label for="set-footer">Texto do Rodapé (Copyright):</label>
+            <input
+              type="text"
+              id="set-footer"
+              placeholder="Ex: © 2024 Todos os direitos reservados"
+            />
+          </div>
+
+          <div class="auth-box full-width">
+            <h3>Acesso Administrativo</h3>
+            <div class="input-group">
+              <div class="form-control">
+                <label for="set-user">Usuário de Login:</label>
+                <input type="text" id="set-user" />
+              </div>
+              <div class="form-control">
+                <label for="set-pass">Nova Senha:</label>
+                <input type="password" id="set-pass" />
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-save btn-block">
+            <i class="fas fa-sync-alt"></i> Atualizar Configurações do Site
+          </button>
+        </form>
+      </section>
+
+      <section class="admin-card">
+        <h2 id="form-title">Cadastrar Novo Produto</h2>
+        <form id="product-form">
+          <input type="hidden" id="prod-id" />
+          <div class="input-group">
+            <input
+              type="text"
+              id="prod-name"
+              placeholder="Nome do Lanche"
+              required
+            />
+            <input
+              type="number"
+              id="prod-price"
+              step="0.01"
+              placeholder="Preço"
+              required
+            />
+          </div>
+          <input
+            type="text"
+            id="prod-img"
+            placeholder="URL da Imagem"
+            required
+          />
+          <textarea
+            id="prod-desc"
+            placeholder="Descrição..."
+            required
+          ></textarea>
+          <button type="submit" class="btn-save">Salvar Produto</button>
+          <button
+            type="button"
+            id="btn-cancel"
+            class="btn-cancel"
+            style="display: none"
+          >
+            Cancelar Edição
+          </button>
+        </form>
+      </section>
+
+      <section class="admin-card">
+        <h2>Produtos no Cardápio</h2>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Imagem</th>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody id="admin-product-list"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="js/db.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>
